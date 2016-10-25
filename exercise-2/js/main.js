@@ -19,24 +19,16 @@ $(function() {
 	}
 
 	var authFunc = function(service) {
-		// Check to see if the service is google or github and set
-		// provider accordingly (more info on login with 3rd party
-		// providers can be found in the firebase documentation).
+		if (service === "google") {
+			provider = new firebase.auth.GoogleAuthProvider();
+		} else if (service === "github") {
+			provider = new firebase.auth.GithubAuthProvider();
+		}
 
 		// Sign into firebase using the correct provider
-
+		firebase.auth().signInWithPopup(provider).then(function(result) {
 			// Log the user result to the console to see what a user object
-			// looks like
 
-
-			// Check to see if we have already saved a user with this id
-			// to our users ref
-
-				// If there is no user with this id, make a new object with
-				// this user's id and set its name and photoURL and add it as
-				// a child to your user ref
-
-			// Navigate to the user.html page once sign in is complete
 	}
 
 	$("#google-signin").on("click", function() {
